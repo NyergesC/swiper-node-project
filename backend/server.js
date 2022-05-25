@@ -16,7 +16,16 @@ app.get('/', (req,resp,next)=>{
 
 /* TOBBI MAPPA LÁTHATÓSÁGA */
 
-app.use('/public', express.static(`${__dirname}/../frontend/public/`));
+app.use('/pub', express.static(`${__dirname}/../frontend/public/`));
+
+
+/* IMAGE DATAJSON ENDPOINT */
+
+/* const dataLocation = path.join(`${__dirname}/../frontend/`); */
+
+app.get("/image-list", (req,res)=>{
+    res.sendFile(path.join(`${__dirname}/../frontend/data.json`))
+})
 
 /* PORT */
 

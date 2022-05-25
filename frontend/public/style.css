@@ -1,0 +1,135 @@
+/* ========================  CSS VARIABLES ====================*/
+:root{
+    --white-color: #fff;
+    --dark-color: #222;
+    --body-bg-color: #fff;
+    --section-bg-color: #202834;
+    --navigation-item-hover-color: #3b5378;
+
+    --text-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    --box-shadow: 0 5px 25px rgba(0 0 0 / 20%);
+
+    --scroll-bar-color: #fff;
+    --scroll-thumb-color: #282f4e;
+    --scroll-thumb-hover-color: #454f6b;
+}
+
+/* =========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    background: transparent;
+    font-family: inherit;
+  }
+  a{
+    text-decoration: none;
+  }
+  a img {
+    border: none;
+  }
+  
+  button,
+  a {
+    cursor: pointer;
+    color: inherit;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  button,
+  textarea,
+  select {
+    appearance: none !important;
+    border-radius: 0;
+  }
+
+  /*============CSS RESET IS OVER==============*/
+
+  body{
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--body-bg-color);
+  }
+
+/*============header============= */
+
+header{
+    position:fixed;
+    z-index: 99;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header .nav-bar{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 200px;
+    transition: 0.3s ease;
+}
+
+.nav-close-btn, .nav-menu-btn{
+    display: none;
+}
+
+.nav-bar .logo{
+    color: var(--dark-color);
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--white-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-shadow: var(--text-shadow);
+}
+
+.navigation .nav-items a{
+    color: var(--white-color);
+    font-size: 16px;
+    text-decoration: none;
+    text-shadow: var(--text-shadow);
+}
+
+.navigation .nav-items a i{
+    display: none;    
+}
+
+.navigation .nav-items a:not(:last-child){
+    margin-right: 45px;
+}
+
+
+
+
+  #root{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.swiper-slide img{
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.swiper-slide h2{
+  position: absolute;
+  top:0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px;
+  background-color: rgb(50, 55, 56);
+  color: rgb(255, 255, 255);
+}
