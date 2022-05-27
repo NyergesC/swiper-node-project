@@ -312,6 +312,10 @@ transition-delay: 0.3s;
     background: var(--scroll-thumb-hover-color);
 }
 
+/* ==============NAVIGATION MENU==================== */
+
+
+
 /* =========SECOND SECTION======== */
 
 #form{
@@ -319,7 +323,7 @@ transition-delay: 0.3s;
     height: 100vh;
 }
 
-/* ============MEDIA QUERY============== */
+/* =============MEDIA QUERY============== */
 
 @media screen and (max-width: 1100px){
     header .nav-bar{
@@ -338,9 +342,9 @@ transition-delay: 0.3s;
     }
 }
 
-@media screen and (max-width: 785px){
+@media screen and (max-width: 768px){
     header .nav-bar{
-        padding: 25px 20px;
+        padding: 5px 20px;
     }
 
     .media-icons{
@@ -367,5 +371,89 @@ transition-delay: 0.3s;
     .text-content p{
         font-size: 0.9em;
     }
+
+    .nav-menu-btn {
+        display: block;
+        color: var(--white-color);
+        font-size: 2.7em;
+
+    }
+
+
+    .nav-close-btn{
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.3em;
+        margin: 10px;        
+        display: block;
+        color: var(--dark-color);
+    }
+
+    .navigation{
+        z-index: 9999;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.25);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s ease;
+    }
+
+    .navigation.active{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .navigation .nav-items{
+        position: relative;
+        background: var(--white-color);
+        width: 400px;
+        max-width: 400px;
+        display: grid;
+        place-content: center;
+        margin: 20px;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: var(--box-shadow);
+        transform: translateY(-200px);
+        transition: 0.3s ease;
+
+    }
+
+    .navigation.active .nav-items{
+        transform:translateY(0)
+    }
+
+    .navigation .nav-items a{
+        color: var(--dark-color);
+        font-size: 1em;
+        margin: 15px 50px;
+        transition: 0.3s ease;
+    }
+
+    .navigation .nav-items a:hover{
+        color: var(--navigation-item-hover-color);
+
+    }
+
+    .navigation .nav-items a i{
+        display: inline;
+        font-size: 1.3em;
+        margin-right: 5px;
+    }
+
+    .click-btn{
+        font-size: 0.9em;
+        padding: 5px 13px
+    }
+
+
 
 }

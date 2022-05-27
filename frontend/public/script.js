@@ -15,13 +15,13 @@ const headerComponent = () => {
                     <div class="nav-items">
                         <i class="uil uil-times nav-close-btn"></i>
                         <a href="#"><i class="uil uil-home"></i>Home</a>
-                        <a href="#"><i class="uil uil-compass"></i>Explore</a>
+                        <a href="#"><i class="uil uil-compass"></i>Challenge</a>
                         <a href="#"><i class="uil uil-info-circle"></i>About</a>
                         <a href="#"><i class="uil uil-document-layout-left"></i>Blog</a>
                         <a href="#"><i class="uil uil-envelope"></i>Contact</a>
                     </div>
                 </div>
-                <i class="uil uil-apps nav-menu-btn"></i>
+                    <i class="uil uil-list-ui-alt nav-menu-btn"></i>
             </div>
         </header>
         `
@@ -81,10 +81,14 @@ const loadEvent = async () => {
 
     const result = await parseJSON('image-list')
 
+/* RENDERING TO THE DOM */
+
     rootElement.insertAdjacentHTML('beforeend', headerComponent());
     rootElement.insertAdjacentHTML('beforeend', swiperComponent(result,swiperSlideComponent));
     rootElement.insertAdjacentHTML('beforeend', swiperComponentThumb(result,thumbsComponent));
 
+
+/* STICKY HEADER */
 
     window.addEventListener("scroll", () => {
         const header = document.querySelector("header")
@@ -92,6 +96,21 @@ const loadEvent = async () => {
         header.classList.toggle("sticky", window.scrollY > 0)
 
     })
+
+/* NAVBAR */
+
+    const menuBtn = document.querySelector(".nav-menu-btn")
+    const closeBtn = document.querySelector(".nav-close-btn")
+    const navigation = document.querySelector(".navigation")
+
+    menuBtn.addEventListener("click", () =>{
+        navigation.classList.add("active")
+    })
+    closeBtn.addEventListener("click", () =>{
+        navigation.classList.remove("active")
+    })
+
+/* SWIPER */
     
     const swiper = new Swiper('.swiper', {
         loop: true,
