@@ -44,6 +44,11 @@ const swiperSlideComponent = ({ title, filename, country}) =>{
 
 const swiperComponent = (data,comp) => {
     return`
+        <div class="media-icons">
+            <a href="#"><i class="uil uil-facebook-f"></i></a>
+            <a href="#"><i class="uil uil-instagram"></i></a>
+            <a href="#"><i class="uil uil-twitter"></i></a>
+        </div>
         <div class="swiper">        
             <div class="swiper-wrapper">
                 ${data.map(img=>comp(img)).join('')}
@@ -79,6 +84,14 @@ const loadEvent = async () => {
     rootElement.insertAdjacentHTML('beforeend', headerComponent());
     rootElement.insertAdjacentHTML('beforeend', swiperComponent(result,swiperSlideComponent));
     rootElement.insertAdjacentHTML('beforeend', swiperComponentThumb(result,thumbsComponent));
+
+
+    window.addEventListener("scroll", () => {
+        const header = document.querySelector("header")
+    
+        header.classList.toggle("sticky", window.scrollY > 0)
+
+    })
     
     const swiper = new Swiper('.swiper', {
         loop: true,
@@ -90,7 +103,7 @@ const loadEvent = async () => {
     const swiper2 = new Swiper(".thumb-swiper", {
         loop: true,
         spaceBetween: 0,
-        slidesPerView: 5,
+        slidesPerView: 4,
 /*         freeMode: true,
         watchSlidesProgress: true, */
         thumbs: {
