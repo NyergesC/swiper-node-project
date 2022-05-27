@@ -54,7 +54,7 @@ const swiperComponent = (data,comp) => {
 }
 const swiperComponentThumb = (data,comp) => {
     return`
-        <div class="mySwiper2">        
+        <div class="thumb-swiper">        
             <div class="swiper-wrapper">
                 ${data.map(img=>comp(img)).join('')}
             </div>
@@ -63,18 +63,12 @@ const swiperComponentThumb = (data,comp) => {
     `
 }
 
-const thumbsComponent = ({filename}) => {
+const thumbsComponent = ({ filename }) => {
     return `
-    <div class="swiper">
-        <div class="swiper-wrapper thumbs-container">
-             <div class="swiper-slide">
-                <img src="/pub/img/${filename}"> 
-            </div>
-        </div>
-    </div>
-`
-}
-
+    <div class="swiper-slide thumb-container">
+        <img src="/pub/img/${filename}">
+    </div>`;
+  };
 
 const loadEvent = async () => {
 
@@ -88,38 +82,24 @@ const loadEvent = async () => {
     
     const swiper = new Swiper('.swiper', {
         loop: true,
+/*         thumbs: {
+            swiper: swiper,
+        },  */
     })
-    
-    const swiper2 = new Swiper(".mySwiper2", {
+
+    const swiper2 = new Swiper(".thumb-swiper", {
         loop: true,
-        spaceBetween: 10,
-        slidesPerView: 4,
-        freeMode: true,
-        watchSlidesProgress: true,
+        spaceBetween: 0,
+        slidesPerView: 5,
+/*         freeMode: true,
+        watchSlidesProgress: true, */
         thumbs: {
             swiper: swiper,
-        },
+        }
     });
     
 
       
-/*     const swiper = new Swiper('.swiper', {
-        loop: true,
-         slidesPerView: 4, 
-         freeMode: true, 
-         watchSlidesProgress: true, 
-
-    })
-
-    const swiper2 = new Swiper(".swiper", {
-        loop: true,
-        spaceBetween: 10, 
-        thumbs: {
-          swiper: swiper,
-        },
-      });
- */
-
 
 
 
