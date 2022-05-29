@@ -15,7 +15,7 @@ const headerComponent = () => {
                     <div class="nav-items">
                         <i class="uil uil-times nav-close-btn"></i>
                         <a href="#"><i class="uil uil-home"></i>Home</a>
-                        <a href="#"><i class="uil uil-compass"></i>Challenge</a>
+                        <a href="#form"><i class="uil uil-compass"></i>Challenge</a>
                         <a href="#"><i class="uil uil-info-circle"></i>About</a>
                         <a href="#"><i class="uil uil-document-layout-left"></i>Blog</a>
                         <a href="#"><i class="uil uil-envelope"></i>Contact</a>
@@ -34,7 +34,7 @@ const swiperSlideComponent = ({ title, filename, country}) =>{
             <div class="text-content">
                 <h2 class="title">${country} <span>${title}</span></h2>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <a href="#" class='click-btn'>Go to Challange<i class="uil uil-arrow-right"></i></a>
+                <a href="#form" class='click-btn'>Go to Challenge<i class="uil uil-arrow-right"></i></a>
             </div>
         </div>
         
@@ -85,28 +85,12 @@ const formComponent = () => {
             <div class="main">
                 <form>
                     <div class="input-field">
-                        <label for="fistname">First name</label>                       
+                        <label for="fistname">First name:</label>                       
                         <input id="firstname" type="text" name="first_name">                                                
                     </div>
                     <div class="input-field">
-                        <label for="lastname">Last name</label>                       
+                        <label for="lastname">Last name:</label>                       
                         <input id="lastname" type="text" name="last_name">                                                
-                    </div>
-                    <div class="input-field">
-                        <label for="email">E-mail</label>                       
-                        <input id="email" type="text" name="email">                                                
-                    </div>
-                    <div class="input-field">
-                        <label for="country">Country</label>                       
-                        <input id="country" type="text" name="country">                                                
-                    </div>
-                    <div class="input-field">
-                        <label for="title">Title</label>                       
-                        <input id="title" type="text" name="title">                                                
-                    </div>
-                    <div class="input-field">
-                        <label for="description">Description</label>                       
-                        <textarea id="description" type="text" name="description"></textarea>                                            
                     </div>
                     <div class="input-field">
                         <label>Gender</label>                       
@@ -116,18 +100,38 @@ const formComponent = () => {
                             <option>Female</option>
                         </select>                                         
                     </div>
+                    <div class="input-field">
+                        <label for="email">E-mail:</label>                       
+                        <input id="email" type="text" name="email">                                                
+                    </div>
+                    <div class="input-field">
+                    <label for="title">Photo's title:</label>                       
+                    <input id="title" type="text" name="title">                                                
+                    </div>
+                    <div class="input-field">
+                        <label for="country">Country:</label>                       
+                        <input id="country" type="text" name="country">                                                
+                    </div>
+                    <div class="input-field">
+                        <label class="description" for="description">Description:</label>                       
+                        <textarea id="description" type="text" name="description"></textarea>                                            
+                    </div>
+                    <div class="input-field">
+                        <label for="file">Upload a photo:</label>                       
+                        <input id="file" type="file" name="file">                                                
+                    </div>
 
                     <div class="input-field">
-                        <label for="student">Did you like?</label>                       
+                        <label for="student">Did you like it?</label>                       
                         <label class="radio">
                             <input class="radio-one" type="radio" checked="checked" name="">
+                            Yes
                             <span class="checkmark"><span>
-                        Yes
                         </label>
                         <label class="radio">
                             <input class="radio-two" type="radio" checked="checked" name="">
+                            No
                             <span class="checkmark"><span>
-                        No
                         </label>                                          
                     </div>
 
