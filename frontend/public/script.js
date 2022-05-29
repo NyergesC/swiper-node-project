@@ -76,62 +76,71 @@ const thumbsComponent = ({ filename }) => {
     </div>`;
   };
 
-  const formComponent = () => {
+const formComponent = () => {
     return `
-        <div class="regform">
-            <h1>Share your photos</h1>
+        <div class="container">
+            <div class="regform">
+                <h1>Share your photos</h1>
+            </div>
+            <div class="main">
+                <form>
+                    <div class="input-field">
+                        <label for="fistname">First name</label>                       
+                        <input id="firstname" type="text" name="first_name">                                                
+                    </div>
+                    <div class="input-field">
+                        <label for="lastname">Last name</label>                       
+                        <input id="lastname" type="text" name="last_name">                                                
+                    </div>
+                    <div class="input-field">
+                        <label for="email">E-mail</label>                       
+                        <input id="email" type="text" name="email">                                                
+                    </div>
+                    <div class="input-field">
+                        <label for="country">Country</label>                       
+                        <input id="country" type="text" name="country">                                                
+                    </div>
+                    <div class="input-field">
+                        <label for="title">Title</label>                       
+                        <input id="title" type="text" name="title">                                                
+                    </div>
+                    <div class="input-field">
+                        <label for="description">Description</label>                       
+                        <textarea id="description" type="text" name="description"></textarea>                                            
+                    </div>
+                    <div class="input-field">
+                        <label>Gender</label>                       
+                        <select class="select" name="subject">
+                            <option disabled="disabled" selected="selected">--Choose Option--</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>                                         
+                    </div>
+
+                    <div class="input-field">
+                        <label for="student">Did you like?</label>                       
+                        <label class="radio">
+                            <input class="radio-one" type="radio" checked="checked" name="">
+                            <span class="checkmark"><span>
+                        Yes
+                        </label>
+                        <label class="radio">
+                            <input class="radio-two" type="radio" checked="checked" name="">
+                            <span class="checkmark"><span>
+                        No
+                        </label>                                          
+                    </div>
+
+                    <div class="button">
+                        <button id="submit" type="submit">Send</button>
+                        <button id="delete">Delete</button>
+                    </div>
+                </form>
+            </div>   
         </div>
-        <div class="mane">
-            <form>
-                <div id="name">
-                    <h2 class="name">Name</h2>
-                    <input class="firstname" type="text" name="first_name"><br>
-                    <label class="firstlabel">first name</label>
-                    <input class="lastname" type="text" name="last_name"><br>
-                    <label class="lastlabel">last name</label>
-                </div>
 
-                <h2 class="name">Email</h2>
-                <input class="email" type="text" name="email">
-
-                <h2 class="name">Country</h2>
-                <input class="country" type="text" name="country">
-
-                <h2 class="name">Title</h2>
-                <input class="title" type="text" name="title">
-
-                <h2 class="name">Subject</h2>
-                <select class="option" name="subject">
-                    <option disabled="disabled" selected="selected">--Choose Option</option>
-                    <option>Subject 1</option>
-                    <option>Subject 2</option>
-                    <option>Subject 3</option>
-                </select>
-
-                <h2 class="name">Description</h2>
-                <input class="description" type="text" name="description">
-                
-                <h2 id="student">Is it your first picture here?</h2>
-
-                <label class="radio">
-                <input class="radio-one" type="radio" checked="checked" name="">
-                <span class="checkmark"><span>
-                Yes
-                </label>
-                <label class="radio">
-                <input class="radio-two" type="radio" checked="checked" name="">
-                <span class="checkmark"><span>
-                No
-                </label>
-
-                <button type="submit">Send</button>
-                <button>Delete</button>
-            </form>
-        </div>   
-    
     `
-
-  }
+}
 
 
 
