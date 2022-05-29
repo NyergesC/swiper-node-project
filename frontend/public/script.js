@@ -57,6 +57,7 @@ const swiperComponent = (data,comp) => {
         </div>       
     `
 }
+
 const swiperComponentThumb = (data,comp) => {
     return`
         <div class="thumb-swiper">        
@@ -75,9 +76,71 @@ const thumbsComponent = ({ filename }) => {
     </div>`;
   };
 
+  const formComponent = () => {
+    return `
+        <div class="regform">
+            <h1>Share your photos</h1>
+        </div>
+        <div class="mane">
+            <form>
+                <div id="name">
+                    <h2 class="name">Name</h2>
+                    <input class="firstname" type="text" name="first_name"><br>
+                    <label class="firstlabel">first name</label>
+                    <input class="lastname" type="text" name="last_name"><br>
+                    <label class="lastlabel">last name</label>
+                </div>
+
+                <h2 class="name">Email</h2>
+                <input class="email" type="text" name="email">
+
+                <h2 class="name">Country</h2>
+                <input class="country" type="text" name="country">
+
+                <h2 class="name">Title</h2>
+                <input class="title" type="text" name="title">
+
+                <h2 class="name">Subject</h2>
+                <select class="option" name="subject">
+                    <option disabled="disabled" selected="selected">--Choose Option</option>
+                    <option>Subject 1</option>
+                    <option>Subject 2</option>
+                    <option>Subject 3</option>
+                </select>
+
+                <h2 class="name">Description</h2>
+                <input class="description" type="text" name="description">
+                
+                <h2 id="student">Is it your first picture here?</h2>
+
+                <label class="radio">
+                <input class="radio-one" type="radio" checked="checked" name="">
+                <span class="checkmark"><span>
+                Yes
+                </label>
+                <label class="radio">
+                <input class="radio-two" type="radio" checked="checked" name="">
+                <span class="checkmark"><span>
+                No
+                </label>
+
+                <button type="submit">Send</button>
+                <button>Delete</button>
+            </form>
+        </div>   
+    
+    `
+
+  }
+
+
+
+/* LOAD EVENT */
+
 const loadEvent = async () => {
 
     const rootElement = document.getElementById('root')
+    const formElement = document.getElementById('form')
 
     const result = await parseJSON('image-list')
 
@@ -86,6 +149,7 @@ const loadEvent = async () => {
     rootElement.insertAdjacentHTML('beforeend', headerComponent());
     rootElement.insertAdjacentHTML('beforeend', swiperComponent(result,swiperSlideComponent));
     rootElement.insertAdjacentHTML('beforeend', swiperComponentThumb(result,thumbsComponent));
+    formElement.insertAdjacentHTML('beforeend', formComponent());
 
 
 /* STICKY HEADER */
@@ -128,10 +192,7 @@ const loadEvent = async () => {
         thumbs: {
             swiper: swiper,
         }
-    });
-    
-
-      
+    });    
 
 
 
