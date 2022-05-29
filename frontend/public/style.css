@@ -7,7 +7,8 @@
     --navigation-item-hover-color: #3b5378;
     --form-bg-color: rgba(0,0,0,0.6);
     --maiin-form-bg-color: rgba(0,0,0,0.5);
-    --secondary-color:#eb960e;
+    --secondary-color:#3baf9f;
+    --menu-icons-hover:rgba(236, 234, 234, 0.383);
 
     --text-shadow: 0 5px 25px rgba(0,0,0,0.1);
     --box-shadow: 0 5px 25px rgba(0 0 0 / 20%);
@@ -124,6 +125,7 @@ header .nav-bar{
     font-size: 16px;
     text-decoration: none;
     text-shadow: var(--text-shadow);
+    transition: all 0.3s ease;
 }
 
 .navigation .nav-items a i{
@@ -132,6 +134,10 @@ header .nav-bar{
 
 .navigation .nav-items a:not(:last-child){
     margin-right: 45px;
+}
+
+.navigation .nav-items a:hover{
+    color: var(--menu-icons-hover);
 }
 
 /* ============HOME SECTION=============*/
@@ -297,6 +303,17 @@ transition-delay: 0.3s;
     font-size: 1.5em;
     margin: 10px 0;
 }
+
+.media-icons a i{
+    transition: all 0.3s ease;
+
+}
+
+.media-icons a i:hover{
+    color: var(--menu-icons-hover)
+}
+
+
 
 /* =======SCROLL BAR======= */
 
@@ -608,10 +625,10 @@ select:focus{
     }
 
     .navigation .nav-items a:hover{
-        color: var(--navigation-item-hover-color);
+        color: var(--secondary-color);
 
     }
-
+   
     .navigation .nav-items a i{
         display: inline;
         font-size: 1.3em;
