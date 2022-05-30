@@ -334,13 +334,74 @@ transition-delay: 0.3s;
     background: var(--scroll-thumb-hover-color);
 }
 
-/* ==============NAVIGATION MENU==================== */
+/* ==============RESPONSE DIV==================== */
+
+.response-wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 500px;
+    width: 100%;
+    background-color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px 20px;
+    margin: 0 10px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    transition: 0.3s ease;
+
+}
 
 
+
+.response-wrapper h1{
+    color: #202834;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.response-wrapper p{
+    color: #202834;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.response-wrapper a{
+    width: 150px;
+    height: 40px;
+    font-size: 1em;
+    background-color: #3baf9f;
+    color: var(--white-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.response-wrapper a:hover{
+    background-color: #6de6d5;
+}
+
+.formBackround:before{
+    content:'';
+    position:absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+
+}
 
 /* =========SECOND SECTION======== */
 
 #form{
+    position: relative;
     width: 100%;
     height: 100vh;
     background-image: url("/pub/img/backround2.jpg");
@@ -470,7 +531,7 @@ select:focus{
     position: absolute;
     left: 0;
     top: 7%;
-    margin-left: 40px
+    margin-left: 35px
 }
 
 
@@ -680,8 +741,32 @@ select:focus{
         font-size: 1em;
     }
 
+    .response-wrapper{
+        max-width: 350px;
+        width: 100%;
+
+    }
+
+    .response-wrapper h1{
+        font-size: 1.3em;
+    }
+    .response-wrapper p{
+        font-size: 1em;
+    }
 
 
+
+}
+
+@media screen and (max-width: 630px){
+    .input-field .checkmark{
+        margin-left: 2px
+    }
+
+    .input-field .radio{
+        font-size: 1em;
+        width: 140px;
+    }
 }
 
 @media screen and (max-width: 420px){

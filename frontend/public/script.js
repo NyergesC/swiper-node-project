@@ -146,6 +146,19 @@ const formComponent = () => {
     `
 }
 
+const responseComponent = () => {
+    return`
+        <div class="response-wrapper">
+            <h1>Gratulations!</h1>
+            <p>Thank you for sharing your photo!</p>
+            <p>Scroll up, refresh and check your photo on the landing page!</p>
+            <a href="#home">Ok</a>
+        </div>  
+    
+    
+    `
+}
+
 
 
 /* LOAD EVENT */
@@ -195,14 +208,12 @@ const loadEvent = async () => {
                     document.querySelector("swiper-wrapper").insertAdjacentHTML('beforeend', `<img src="/pub/img/${title}>`) 
                 }
             }) 
+            
+        formElement.insertAdjacentHTML('beforeend', responseComponent())
+        formElement.classList.add("formBackround")
 
 
     })
-
-
-
-
-
 
 
 
