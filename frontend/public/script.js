@@ -83,9 +83,9 @@ const formComponent = () => {
                 <h1>Share your photos</h1>
             </div>
             <div class="main">
-                <form>
+                <form id="form-wrapper">
                     <div class="input-field">
-                        <label for="fistname">First name:</label>                       
+                        <label for="firstname">First name:</label>                       
                         <input id="firstname" type="text" name="first_name">                                                
                     </div>
                     <div class="input-field">
@@ -117,8 +117,8 @@ const formComponent = () => {
                         <textarea id="description" type="text" name="description"></textarea>                                            
                     </div>
                     <div class="input-field">
-                        <label for="file">Upload a photo:</label>                       
-                        <input id="file" type="file" name="file">                                                
+                        <label for="picture">Upload a photo:</label>                       
+                        <input id="picture" type="file" name="picture">                                                
                     </div>
 
                     <div class="input-field">
@@ -154,15 +154,57 @@ const loadEvent = async () => {
 
     const rootElement = document.getElementById('root')
     const formElement = document.getElementById('form')
-
+    
+    
     const result = await parseJSON('image-list')
-
-/* RENDERING TO THE DOM */
-
+    
+    /* RENDERING TO THE DOM */
+    
     rootElement.insertAdjacentHTML('beforeend', headerComponent());
     rootElement.insertAdjacentHTML('beforeend', swiperComponent(result,swiperSlideComponent));
-    rootElement.insertAdjacentHTML('beforeend', swiperComponentThumb(result,thumbsComponent));
+    rootElement.insertAdjacentHTML('beforeend', swiperComponentThumb(result,thumbsComponent));    
     formElement.insertAdjacentHTML('beforeend', formComponent());
+
+    /* FORMDATA / FETCH / RESPONSE / SEND TO BACKEND */
+    
+    const formWrapper = document.getElementById('form-wrapper')
+    console.log(formWrapper)
+
+
+    formWrapper.addEventListener('submit', (e)=>{
+        e.preventDefault()
+
+        const formData = new FormData()
+
+
+        formData.append('title', e.target.querySelector(`input[name='title']`).value);
+        formData.append('country', e.target.querySelector(`input[name='country']`).value);
+        formData.append('description', e.target.querySelector(`textarea[name='description']`).value);
+        formData.append('picture', e.target.querySelector(`input[name='picture']`).files[0]);
+
+        const fetchSettings = {
+            method: "POST",
+            body: formData
+        }
+
+        fetch('/', fetchSettings)
+              .then(async data =>{
+                if(data.status === 200){
+                    const res = await data.json()
+                    console.log(res);
+                    document.querySelector("swiper-wrapper").insertAdjacentHTML('beforeend', `<img src="/pub/img/${title}>`) 
+                }
+            }) 
+
+
+    })
+
+
+
+
+
+
+
 
 
 /* STICKY HEADER */

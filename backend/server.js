@@ -21,12 +21,53 @@ app.use('/pub', express.static(`${__dirname}/../frontend/public/`));
 
 /* IMAGE DATAJSON ENDPOINT */
 
-/* const dataLocation = path.join(`${__dirname}/../frontend/`); */
 
 app.get("/image-list", (req,res)=>{
     res.sendFile(path.join(`${__dirname}/../frontend/data.json`))
 })
 
+/* READ FILE */
+const dataLocation = path.join(`${__dirname}/../frontend/`);
+
+let jsonData = []
+    try {
+        let data = fs.readFileSync(`${dataLocation}data.json`, (err) =>{
+                if(err){
+                    console.log(err);
+                }
+
+        })
+
+      jsonData = JSON.parse(data) 
+        
+    } catch (err) {
+        console.log(err);        
+    }
+
+/* POST */
+
+ app.post('/', (req, res) => {
+    const picture = req.files.picture;
+    const formData = req.body
+    formData.filename = picture.name
+    jsonData.push(formData)
+
+    fs.writeFile(`${dataLocation}data.json`, JSON.stringify(jsonData), (err) => {
+        if (err) {
+            console.log(err);
+        }
+    })
+
+    const uploads = path.join(`${__dirname}/../frontend/public/img/`);
+    if(picture) {
+        console.log(uploads + picture.name);
+        picture.mv(uploads + picture.name)
+    }
+
+    res.send(formData)
+})
+
+ 
 /* PORT */
 
 const port = 9000;

@@ -343,7 +343,7 @@ transition-delay: 0.3s;
 #form{
     width: 100%;
     height: 100vh;
-    background-image: url("backround2.jpg");
+    background-image: url("/pub/img/backround2.jpg");
     background-size: cover;
     background-position: center center;
     display: flex;
