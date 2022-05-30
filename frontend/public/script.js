@@ -102,7 +102,7 @@ const formComponent = () => {
                     </div>
                     <div class="input-field">
                         <label for="email">E-mail:</label>                       
-                        <input id="email" type="text" name="email">                                                
+                        <input id="email" type="text" name="email" pattern=".+@globex\.com" size="30" required value="default@example.com">                                                
                     </div>
                     <div class="input-field">
                     <label for="title">Photo's title:</label>                       
