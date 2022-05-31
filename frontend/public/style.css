@@ -357,6 +357,19 @@ transition-delay: 0.3s;
 
 }
 
+.response-wrapper i{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #202834;
+    font-size: 1.4em;
+    padding: 1px 3px;
+}
+
+.response-wrapper i:hover{
+    color: #434f61;
+}
+
 
 
 .response-wrapper h1{

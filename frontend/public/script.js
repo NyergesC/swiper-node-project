@@ -124,12 +124,12 @@ const formComponent = () => {
                     <div class="input-field">
                         <label for="student">Did you like it?</label>                       
                         <label class="radio">
-                            <input class="radio-one" type="radio" checked="checked" name="">
+                            <input class="radio-one" type="radio" checked="checked" name="like" value="1">
                             Yes
                             <span class="checkmark"><span>
                         </label>
                         <label class="radio">
-                            <input class="radio-two" type="radio" checked="checked" name="">
+                            <input class="radio-two" type="radio" value="0" name="like">
                             No
                             <span class="checkmark"><span>
                         </label>                                          
@@ -149,6 +149,7 @@ const formComponent = () => {
 const responseComponent = () => {
     return`
         <div class="response-wrapper">
+            <i id="response-x" class="uil uil-times response-close-btn"></i>
             <h1>Gratulations!</h1>
             <p>Thank you for sharing your photo!</p>
             <p>Scroll up, refresh and check your photo on the landing page!</p>
@@ -177,10 +178,12 @@ const loadEvent = async () => {
     rootElement.insertAdjacentHTML('beforeend', swiperComponent(result,swiperSlideComponent));
     rootElement.insertAdjacentHTML('beforeend', swiperComponentThumb(result,thumbsComponent));    
     formElement.insertAdjacentHTML('beforeend', formComponent());
-
+    
+    
     /* FORMDATA / FETCH / RESPONSE / SEND TO BACKEND */
     
     const formWrapper = document.getElementById('form-wrapper')
+    const sendButton = document.getElementById('submit')
     console.log(formWrapper)
 
 
@@ -207,11 +210,23 @@ const loadEvent = async () => {
                     console.log(res);
                     document.querySelector("swiper-wrapper").insertAdjacentHTML('beforeend', `<img src="/pub/img/${title}>`) 
                 }
-            }) 
+            })
             
+/*         document.getElementById("submit").addEventListener('click', () =>{
+            formElement.insertAdjacentHTML('beforeend', responseComponent())
+
+        }) */
         formElement.insertAdjacentHTML('beforeend', responseComponent())
         formElement.classList.add("formBackround")
 
+  
+/*         const x = document.getElementById("response-x")
+   
+        x.addEventListener("click", () => {
+            document.querySelector("response-wrapper").classList.remove("response-wrapper")
+            formElement.classList.remove("formBackround")
+        })
+ */
 
     })
 
