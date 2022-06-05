@@ -666,6 +666,7 @@ footer{
     width: fit-content;
     margin-bottom: 40px;
     position: relative;
+    color: var(--secondary-color);
 }
 
 .email{
@@ -737,8 +738,8 @@ ul li{
     padding: 3px 6px;
     line-height: 40px;
     font-size: 1.2em;
-    color: #000;
-    background: #fff;
+    color: #000; 
+    background: var(--white-color); 
     margin-right: 15px;
     transition: .3s all ease;
 }
@@ -774,8 +775,7 @@ hr{
 .underline span{
     width: 20px;
     height: 100%;
-    background: #fff;
-/*     background: linear-gradient(to right, #3baf9f, #fff); */
+    background: var(--white-color);
     border-radius: 3px;
     position: absolute;
     top: 0;
