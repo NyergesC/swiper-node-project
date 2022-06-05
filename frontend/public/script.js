@@ -160,6 +160,59 @@ const responseComponent = () => {
     `
 }
 
+const footerComponent = () => {
+    return`
+        <footer>
+            <div class="row">
+                <div class="col">
+                    <a href="" class="logo">Logo</a>      
+                    <p class="subs">Subsribe on other social media platform and get immediate notification of latest news.</p>      
+                </div>
+                <div class="col">
+                    <h3>Office <div class="underline"><span></span></div></h3>
+                    <p>example Road</p>
+                    <p>example, City</p>
+                    <p>Something street, 1234, Hungary</p>
+                    <p class="email">cintia.nyerges@gmail.com</p>
+                    <h4>+36703007874</h4>                
+                </div>
+                <div class="col">
+                    <h3>Links <div class="underline"><span></span></div></h3>
+                    <ul>
+                        <li><a href="#"><i class="uil uil-home"></i>Home</a></li>
+                        <li><a href="#form"><i class="uil uil-compass"></i>Challenge</a></li>
+                        <li><a href="#"><i class="uil uil-info-circle"></i>About</a></li>
+                        <li><a href="#"><i class="uil uil-document-layout-left"></i>Blog</a></li>
+                        <li><a href="#"><i class="uil uil-envelope"></i>Contact</a></li>
+                
+                </div>
+                <div class="col">
+                    <h3>Newsletter <div class="underline"><span></span></div></h3>
+                    <form class="footer-form">
+                        <a href="#"><i class="uil uil-envelope"></i></a>
+                        <input type="email" placeholder="Enter your e-mail" required>
+                        <button type="submit"><i class="uil uil-arrow-right"></i></button>
+                    </form>
+                    <div class="social-icons">
+                        <a href="#"><i class="uil uil-facebook-f"></i></a>
+                        <a href="#"><i class="uil uil-instagram"></i></a>
+                        <a href="#"><i class="uil uil-twitter"></i></a>
+                        <a href="#"><i class="uil uil-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div> 
+            <hr>
+            <p class="copyright">Cintia Nyerges <i class="uil uil-copyright"></i> 2022 - All Rights Reserved</p>
+  
+        
+     
+        </footer>
+    
+    
+    
+    `
+}
+
 
 
 /* LOAD EVENT */
@@ -168,6 +221,7 @@ const loadEvent = async () => {
 
     const rootElement = document.getElementById('root')
     const formElement = document.getElementById('form')
+    const footerElement = document.getElementById('footer')
     
     
     const result = await parseJSON('image-list')
@@ -178,7 +232,7 @@ const loadEvent = async () => {
     rootElement.insertAdjacentHTML('beforeend', swiperComponent(result,swiperSlideComponent));
     rootElement.insertAdjacentHTML('beforeend', swiperComponentThumb(result,thumbsComponent));    
     formElement.insertAdjacentHTML('beforeend', formComponent());
-    
+    footerElement.insertAdjacentHTML('beforeend', footerComponent())
     
     /* FORMDATA / FETCH / RESPONSE / SEND TO BACKEND */
     
