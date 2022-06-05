@@ -170,7 +170,7 @@ const footerComponent = () => {
                 </div>
                 <div class="col">
                     <h3>Office <div class="underline"><span></span></div></h3>
-                    <p>example Road</p>
+                    <p>example District</p>
                     <p>example, City</p>
                     <p>Something street, 1234, Hungary</p>
                     <p class="email">cintia.nyerges@gmail.com</p>
@@ -202,13 +202,9 @@ const footerComponent = () => {
                 </div>
             </div> 
             <hr>
-            <p class="copyright">Cintia Nyerges <i class="uil uil-copyright"></i> 2022 - All Rights Reserved</p>
-  
-        
+            <p class="copyright">Cintia Nyerges <i class="uil uil-copyright"></i> 2022 - All Rights Reserved</p>      
      
-        </footer>
-    
-    
+        </footer>    
     
     `
 }

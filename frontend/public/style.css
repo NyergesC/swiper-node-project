@@ -621,10 +621,10 @@ footer{
     width: 100%;
     position: relative;
     bottom: 0;
-    background: linear-gradient(to right, #00093c, #2d0b00);
+/*     background: linear-gradient(to right, #00093c, #2d0b00); */
+    background: linear-gradient(to right, #202834, rgba(0,0,0,0.9));
     color: var(--white-color);
-    padding: 100px 0 30px;
-/*     border-top-left-radius: 125px; */
+    padding: 80px 0 30px;
     font-size: 1em;
     line-height: 20px;
 }
@@ -676,7 +676,25 @@ footer{
 
 ul li{
     list-style: none;
+    margin-bottom: 13px;
     
+}
+
+#footer ul li i{
+    margin-right: 3px;
+
+}
+
+#footer ul li{
+    transition: all 0.3s ease;
+}
+
+
+#footer ul li:hover{
+    color: var(--menu-icons-hover);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1); 
 }
 
 #footer form{
@@ -686,11 +704,11 @@ ul li{
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
     margin-bottom: 50px;
+    padding: 0;
 }
 
 #footer form i{
     font-size: 18px;
-    margin: 0 10px;
 
 }
 
@@ -709,31 +727,37 @@ ul li{
     
 }
 #footer button i{
-    font-size: 20px;
+    font-size: 1.4em;
     color: #ccc;
 }
-
 
 .social-icons a i{
     border-radius: 50%;
     text-align: center;
     padding: 3px 6px;
     line-height: 40px;
-    font-size: 20px;
+    font-size: 1.2em;
     color: #000;
     background: #fff;
     margin-right: 15px;
+    transition: .3s all ease;
+}
+
+.social-icons a i:hover{
+    background-color: var(--menu-icons-hover);
 }
 
 hr{
     width: 90%;
     border: 0;
     border-bottom: 1px solid #ccc;
-    margin: 20px auto;
+    margin: 25px auto;
+
 }
 
 .copyright{
     text-align: center;
+    
 }
 
 .underline{
@@ -748,9 +772,10 @@ hr{
 }
 
 .underline span{
-    width: 15px;
+    width: 20px;
     height: 100%;
     background: #fff;
+/*     background: linear-gradient(to right, #3baf9f, #fff); */
     border-radius: 3px;
     position: absolute;
     top: 0;
