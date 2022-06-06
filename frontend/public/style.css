@@ -284,10 +284,6 @@ transition-delay: 0.3s;
 
 }
 
-/* .swiper-slide-active {
-    border: 1px solid var(--white-color);
-}
- */
 
 
 .media-icons{
@@ -522,15 +518,11 @@ select:focus{
     justify-content: center;
     align-items: center;
     color: #fff;
- /*    padding-left: 0 10px; */
     position: relative;
     cursor: pointer;
  
 }
  
-/* .radio + .radio{
-    margin-left: 10px
-}  */
 .radio input[type="radio"]{
     display: none;
 }
@@ -998,4 +990,8 @@ hr{
     }
 
 
+}
+
+.hidden{
+    display: none;
 }

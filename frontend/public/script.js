@@ -27,9 +27,9 @@ const headerComponent = () => {
         `
 }
 
-const swiperSlideComponent = ({ title, filename, country}) =>{
+const swiperSlideComponent = ({id, title, filename, country}) =>{
     return `
-        <div class='swiper-slide dark-layer'>
+        <div class='swiper-slide dark-layer' id=${id}>
             <img src="/pub/img/${filename}"> 
             <div class="text-content">
                 <h2 class="title">${country} <span>${title}</span></h2>
@@ -218,7 +218,7 @@ const loadEvent = async () => {
     const rootElement = document.getElementById('root')
     const formElement = document.getElementById('form')
     const footerElement = document.getElementById('footer')
-    
+   
     
     const result = await parseJSON('image-list')
     
@@ -258,28 +258,52 @@ const loadEvent = async () => {
                 if(data.status === 200){
                     const res = await data.json()
                     console.log(res);
+                    const id = res.id;
                     document.querySelector("swiper-wrapper").insertAdjacentHTML('beforeend', `<img src="/pub/img/${title}>`) 
+                    addEventListenersToDeleteButtons();
+                    swiper.update()
                 }
             })
             
-/*         document.getElementById("submit").addEventListener('click', () =>{
+        }) 
+        
+/* RESPONSE EVENTS */
+         
+        
+        document.getElementById("submit").addEventListener('click', () =>{
             formElement.insertAdjacentHTML('beforeend', responseComponent())
+            formElement.classList.add("formBackround")
 
-        }) */
-        formElement.insertAdjacentHTML('beforeend', responseComponent())
-        formElement.classList.add("formBackround")
+            const x = document.getElementById("response-x")
 
-  
-/*         const x = document.getElementById("response-x")
-   
-        x.addEventListener("click", () => {
-            document.querySelector("response-wrapper").classList.remove("response-wrapper")
-            formElement.classList.remove("formBackround")
+            x.addEventListener("click", () => {
+                document.querySelector(".response-wrapper").classList.add("hidden")
+                formElement.classList.remove("formBackround")
         })
- */
-
     })
 
+
+/* DELETE FUNCTION */
+
+const addEventListenersToDeleteButtons = () => {
+    const removeButton = document.getElementById("delete");
+
+
+        removeButton.addEventListener("click", () => {
+            let id = removeButton.parentNode.id;
+            fetch("/delete/" + id, {
+                method: "DELETE",
+            })
+                .then((res) => res.text()) // or res.json()
+                .then((res) => console.log(res));
+
+            swiper.removeSlide(swiper.realIndex);
+            swiper.update();
+        });
+    
+};
+addEventListenersToDeleteButtons();
+        
 
 
 
@@ -309,17 +333,12 @@ const loadEvent = async () => {
     
     const swiper = new Swiper('.swiper', {
         loop: true,
-/*         thumbs: {
-            swiper: swiper,
-        },  */
     })
 
     const swiper2 = new Swiper(".thumb-swiper", {
         loop: true,
         spaceBetween: 0,
         slidesPerView: 4,
-/*         freeMode: true,
-        watchSlidesProgress: true, */
         thumbs: {
             swiper: swiper,
         }
