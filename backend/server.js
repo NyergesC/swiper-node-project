@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require('fs');
 const path = require('path');
 const fileUpload = require('express-fileupload');
-
+const md5 = require('md5');
 
 const app = express();
 
@@ -68,7 +68,11 @@ const getFreeId = () => {
     const picture = req.files.picture;
     const formData = req.body
     formData.filename = picture.name
+    formData['md5'] = md5(picture.data);
+    formData['user'] = md5(req.body.email);
+
     jsonData.push(formData)
+
 
     fs.writeFile(`${dataLocation}data.json`, JSON.stringify(jsonData), (err) => {
         if (err) {

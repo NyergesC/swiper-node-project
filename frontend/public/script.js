@@ -159,6 +159,16 @@ const responseComponent = () => {
     
     `
 }
+const deleteComponent = () => {
+    return`
+        <div class="response-wrapper">
+            <i id="response-x" class="uil uil-times response-close-btn"></i>
+            <p>Your photo is deleted!</p>
+            <a href="#home">Ok</a>
+        </div>      
+    
+    `
+}
 
 const footerComponent = () => {
     return`
@@ -234,7 +244,6 @@ const loadEvent = async () => {
     
     const formWrapper = document.getElementById('form-wrapper')
     const sendButton = document.getElementById('submit')
-    console.log(formWrapper)
 
 
     formWrapper.addEventListener('submit', (e)=>{
@@ -246,6 +255,7 @@ const loadEvent = async () => {
         formData.append('title', e.target.querySelector(`input[name='title']`).value);
         formData.append('country', e.target.querySelector(`input[name='country']`).value);
         formData.append('description', e.target.querySelector(`textarea[name='description']`).value);
+        formData.append('email', e.target.querySelector(`input[name='email']`).value);
         formData.append('picture', e.target.querySelector(`input[name='picture']`).files[0]);
 
         const fetchSettings = {
@@ -270,18 +280,29 @@ const loadEvent = async () => {
 /* RESPONSE EVENTS */
          
         
-        document.getElementById("submit").addEventListener('click', () =>{
-            formElement.insertAdjacentHTML('beforeend', responseComponent())
-            formElement.classList.add("formBackround")
+    document.getElementById("submit").addEventListener('click', () =>{
+        formElement.insertAdjacentHTML('beforeend', responseComponent())
+        formElement.classList.add("formBackround")
 
-            const x = document.getElementById("response-x")
+        const x = document.getElementById("response-x")
 
-            x.addEventListener("click", () => {
-                document.querySelector(".response-wrapper").classList.add("hidden")
-                formElement.classList.remove("formBackround")
+        x.addEventListener("click", () => {
+            document.querySelector(".response-wrapper").classList.add("hidden")
+            formElement.classList.remove("formBackround")
         })
     })
+    
+    document.getElementById("delete").addEventListener('click', () => {
+        formElement.insertAdjacentHTML('beforeend', deleteComponent())
+        formElement.classList.add("formBackround")
 
+        const x = document.getElementById("response-x")
+
+        x.addEventListener("click", () => {
+            document.querySelector(".response-wrapper").classList.add("hidden")
+            formElement.classList.remove("formBackround")
+        })
+    })
 
 /* DELETE FUNCTION */
 
@@ -294,7 +315,7 @@ const addEventListenersToDeleteButtons = () => {
             fetch("/delete/" + id, {
                 method: "DELETE",
             })
-                .then((res) => res.text()) // or res.json()
+                .then((res) => res.json()) // or res.json()
                 .then((res) => console.log(res));
 
             swiper.removeSlide(swiper.realIndex);
