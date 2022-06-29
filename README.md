@@ -1,1 +1,1 @@
-# swiper-node-project
+# Image Gallery
