@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 # Image Gallery
 =======
-# Image Gallery 
 
-*** 
 
 > ## Getting Started 
 >
