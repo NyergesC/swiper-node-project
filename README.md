@@ -1,5 +1,5 @@
 # Image Gallery
-=======
+
 
 > ## Getting Started 
 >
