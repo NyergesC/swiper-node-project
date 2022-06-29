@@ -4,10 +4,10 @@
 
 To start the website please write the followings to your terminal: 
 
-1.) cd backend 
-2.) npm install -y 
-3.) npm install md5 
-4.) node server.js 
+1.) cd backend   
+2.) npm install -y   
+3.) npm install md5   
+4.) node server.js    
 
 ## Scope of the project
 
