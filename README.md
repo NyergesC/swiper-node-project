@@ -16,5 +16,5 @@
 
  #### If the user changed his mind, He can also delete the picture using the delete button.
 
-![Landing Page!](/frontend/public/images/image_gallery.jpg "Landing Page")
+![Landing Page!](/frontend/public/img/image_gallery.jpg "Landing Page")
 
