@@ -16,5 +16,5 @@ The aim of the project was to build a website where the server side is included.
 If the user changed his mind, He can also delete the picture using the delete button.
 
 
-![Landing Page!](/frontend/public/img/image_gallery.jpg "Landing Page")
+![Weather App!](/frontend/weather_app.jpg "Weather App")
 

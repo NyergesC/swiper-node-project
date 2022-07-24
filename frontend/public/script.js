@@ -18,7 +18,7 @@ const headerComponent = () => {
                         <a href="#form"><i class="uil uil-compass"></i>Challenge</a>
                         <a href="#"><i class="uil uil-info-circle"></i>About</a>
                         <a href="#"><i class="uil uil-document-layout-left"></i>Blog</a>
-                        <a href="#"><i class="uil uil-envelope"></i>Contact</a>
+                        <a href="#footer"><i class="uil uil-envelope"></i>Contact</a>
                     </div>
                 </div>
                     <i class="uil uil-list-ui-alt nav-menu-btn"></i>
@@ -172,10 +172,10 @@ const deleteComponent = () => {
 
 const footerComponent = () => {
     return`
-        <footer>
+        <footer id="footer">
             <div class="row">
                 <div class="col">
-                    <a href="" class="logo">Logo</a>      
+                    <a href="" class="logo">Portfolio</a>      
                     <p class="subs">Subsribe on other social media platform and get immediate notification of latest news.</p>      
                 </div>
                 <div class="col">
