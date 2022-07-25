@@ -5,7 +5,7 @@ const fileUpload = require('express-fileupload');
 const md5 = require('md5');
 
 const app = express();
-
+app.use(express.json())
 app.use(fileUpload())
 
 const pathToFrontend = path.join(`${__dirname}/../frontend`);
@@ -40,7 +40,7 @@ let jsonData = []
 
         })
 
-      jsonData = JSON.parse(data) 
+        jsonData = JSON.parse(data) 
         
     } catch (error) {
         fs.writeFile(
@@ -66,8 +66,12 @@ const getFreeId = () => {
 
  app.post('/', (req, res) => {
     const picture = req.files.picture;
+
+    //UPLOAD DATA FROM INPUT FIELDS
+
     const formData = req.body
-    formData.filename = picture.name
+    formData.id = getFreeId();
+    formData.filename = picture.name;
     formData['md5'] = md5(picture.data);
     formData['user'] = md5(req.body.email);
 
@@ -79,6 +83,8 @@ const getFreeId = () => {
             console.log(err);
         }
     })
+
+    //UPLOAD IMAGE
 
     const uploads = path.join(`${__dirname}/../frontend/public/img/`);
     if(picture) {
@@ -93,12 +99,13 @@ const getFreeId = () => {
 app.delete("/delete/:id", (req, res) => {
 	let newJsonData = [];
 	jsonData.forEach((element) => {
+
 		if (element.id.toString() === req.params.id) {
-			console.log(element);
-			const removePath = __dirname + "/../frontend/img/" + element.filename;
+			const removePath = __dirname + "/../frontend/public/img/" + element.filename;
 			console.log(removePath);
 			try {
 				fs.unlinkSync(removePath);
+                console.log("torolni probalom")
 			} catch (err) {
 				console.error(err);
 			}
@@ -107,16 +114,18 @@ app.delete("/delete/:id", (req, res) => {
 		}
 	});
 
+    jsonData = newJsonData
+
+    //OVERWRITE THE DATA.JSON WITH UPDATED ARRAY
 	fs.writeFile(
 		`${pathToFrontend}/data.json`,
-		JSON.stringify(newJsonData),
+		JSON.stringify(jsonData),
 		(error) => {
 			if (error) {
 				console.log(error);
 			}
 		}
 	);
-	jsonData = newJsonData;
 
 	res.sendStatus(200);
 });

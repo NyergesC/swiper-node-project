@@ -27,13 +27,13 @@ const headerComponent = () => {
         `
 }
 
-const swiperSlideComponent = ({id, title, filename, country}) =>{
+const swiperSlideComponent = ({id, title, filename, country, description}) =>{
     return `
         <div class='swiper-slide dark-layer' id=${id}>
             <img src="/pub/img/${filename}"> 
             <div class="text-content">
                 <h2 class="title">${country} <span>${title}</span></h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>${description}</p>
                 <a href="#form" class='click-btn'>Go to Challenge<i class="uil uil-arrow-right"></i></a>
             </div>
         </div>
@@ -152,7 +152,7 @@ const responseComponent = () => {
             <i id="response-x" class="uil uil-times response-close-btn"></i>
             <h1>Gratulations!</h1>
             <p>Thank you for sharing your photo!</p>
-            <p>Scroll up, refresh and check your photo on the landing page!</p>
+            <p>Scroll up and check your photo on the landing page!</p>
             <a href="#home">Ok</a>
         </div>  
     
@@ -269,14 +269,54 @@ const loadEvent = async () => {
                     const res = await data.json()
                     console.log(res);
                     const id = res.id;
-                    document.querySelector("swiper-wrapper").insertAdjacentHTML('beforeend', `<img src="/pub/img/${title}>`) 
-                    addEventListenersToDeleteButtons();
+                    const title = res.title;
+                    const country = res.country;
+                    const filename = res.filename;
+                    const description = res.description;
+                    swiper.appendSlide(
+                        swiperSlideComponent({
+                            id,
+                            title,
+                            country,
+                            filename,
+                            description,
+                        })
+                    );
+/*                     document.querySelector("swiper-wrapper").insertAdjacentHTML('beforeend', `<img src="/pub/img/${title}>`)   */
+                    /* addEventListenersToDeleteButtons(); */
                     swiper.update()
                 }
             })
+/*             .catch((error) => {
+                e.target.outerHTML = `Error happend!`;
+                console.log(error);
+            }); */
             
         }) 
         
+    /* DELETE FUNCTION */
+/* 
+    const addEventListenersToDeleteButtons = () => {
+        const removeButton = document.get
+
+
+
+            removeButton.addEventListener("click", () => {
+            let id = removeButton.parentNode.id; 
+                let id = removeButton.parentElement.id; 
+                console.log(removeButton.parentElement.id)
+                fetch("/delete/" + id, {
+                    method: "DELETE",
+                })
+                    .then((res) => res.json()) // or res.json()
+                    .then((res) => console.log(res));
+
+                swiper.removeSlide(swiper.realIndex);
+                swiper.update();
+            });
+    
+};
+addEventListenersToDeleteButtons();  */
 /* RESPONSE EVENTS */
          
         
@@ -304,26 +344,24 @@ const loadEvent = async () => {
         })
     })
 
-/* DELETE FUNCTION */
+ 
+ const addEventListenersToDeleteButtons = () => {
+    const removeButtons = document.getElementsByClassName("button");
 
-const addEventListenersToDeleteButtons = () => {
-    const removeButton = document.getElementById("delete");
-
-
+    Array.from(removeButtons).forEach((removeButton) => {
         removeButton.addEventListener("click", () => {
-            let id = removeButton.parentNode.id;
+            let id = removeButton.parentElement.id;
+
             fetch("/delete/" + id, {
                 method: "DELETE",
-            })
-                .then((res) => res.json()) // or res.json()
-                .then((res) => console.log(res));
+            }).then((res) => res.text());
 
             swiper.removeSlide(swiper.realIndex);
             swiper.update();
         });
-    
+    });
 };
-addEventListenersToDeleteButtons();
+addEventListenersToDeleteButtons(); 
         
 
 
